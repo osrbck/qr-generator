@@ -1,0 +1,56 @@
+<tui-root tuiTheme="dark">
+  <div class="shell">
+    <div class="card" [class.shifted]="qr()">
+      <span class="badge"><span class="dot"></span>RevoraSmart</span>
+
+      <h1 class="title">QR Kod Oluşturucu</h1>
+      <p class="subtitle">Bağlantını yapıştır, QR kodunu hemen oluştur.</p>
+
+      <tui-textfield [tuiTextfieldCleaner]="false">
+        <label tuiLabel>URL</label>
+        <input
+          tuiInput
+          placeholder="https://example.com"
+          autocomplete="off"
+          [disabled]="loading()"
+          [(ngModel)]="url"
+          (keydown.enter)="generate()"
+        />
+      </tui-textfield>
+
+      <button
+        tuiButton
+        size="l"
+        type="button"
+        class="generate"
+        [disabled]="loading()"
+        (click)="generate()"
+      >
+        @if (loading()) {
+          <span class="spinner" aria-hidden="true"></span>
+          <span>Oluşturuluyor…</span>
+        } @else {
+          QR Kod Oluştur
+        }
+      </button>
+
+      @if (error()) {
+        <p class="error">{{ error() }}</p>
+      }
+
+      <div class="preview" [class.open]="qr()">
+        <div class="preview-inner">
+          <div class="frame">
+            @if (qr(); as src) {
+              <img class="qr" [src]="src" alt="Oluşturulan QR kod" />
+            }
+          </div>
+
+          <a tuiButton appearance="flat" size="m" class="download" [href]="qr() || null" download="qr-code.jpg">
+            JPEG Olarak İndir
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</tui-root>

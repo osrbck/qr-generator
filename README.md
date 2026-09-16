@@ -1,9 +1,28 @@
-# QR-GENERATOR
+# QR Generator
 
-<div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; background-color: #f7f7f7;">
-  <pre><code>npm i
-    <br/>
-npm start</code></pre>
-</div>
+URL girip QR kodu JPEG olarak indirmenizi sağlayan tek sayfalık Angular uygulaması.
 
-#### Then write your URL..
+- Angular 21 (standalone + signals)
+- Taiga UI 5
+- QR kod tamamen tarayıcıda üretilir, sunucu gerekmez
+
+## Geliştirme
+
+```bash
+npm install
+npm start
+```
+
+Uygulama `http://localhost:4200/` adresinde çalışır.
+
+## Build
+
+```bash
+npm run build
+```
+
+Çıktı `dist/qr-generator/browser` klasörüne üretilir.
+
+## Vercel'e Deploy
+
+Repo'yu Vercel'e bağlamanız yeterli; ayarlar `vercel.json` içinde tanımlıdır.
